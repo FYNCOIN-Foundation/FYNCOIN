@@ -1,0 +1,26 @@
+[Unit]
+Description=FYN's distributed currency daemon
+After=network.target
+
+[Service]
+User=fyn
+Group=fyn
+
+Type=forking
+PIDFile=/var/lib/fynd/fynd.pid
+
+ExecStart=/usr/bin/fynd -daemon -pid=/var/lib/fynd/fynd.pid \
+          -conf=/etc/fyn/fyn.conf -datadir=/var/lib/fynd
+
+ExecStop=-/usr/bin/fyn-cli -conf=/etc/fyn/fyn.conf \
+         -datadir=/var/lib/fynd stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

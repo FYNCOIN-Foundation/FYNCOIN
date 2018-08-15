@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=FYN
+Comment=FYN P2P Cryptocurrency
+Comment[fr]=FYN, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=FYN, eşten eşe kriptografik sanal para birimi
+Exec=fyn-qt %u
+Terminal=false
+Type=Application
+Icon=fyn128
+MimeType=x-scheme-handler/fyn;
+Categories=Office;Finance;
