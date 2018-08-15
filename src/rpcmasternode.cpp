@@ -570,8 +570,18 @@ UniValue createmasternodekey (const UniValue& params, bool fHelp)
 
     CKey secret;
     secret.MakeNewKey(false);
+	
+	UniValue obj(UniValue::VOBJ);
 
-    return CBitcoinSecret(secret).ToString();
+    CPubKey pubkey;
+    pubkey = secret.GetPubKey();
+    std::string hexstring = HexStr(pubkey.begin(), pubkey.end());
+	
+	obj.push_back(Pair(" Secret key ",  CBitcoinSecret(secret).ToString()));
+    obj.push_back(Pair(" Public key ",  hexstring));
+	return obj;
+
+    //return CBitcoinSecret(secret).ToString();
 }
 
 UniValue getmasternodeoutputs (const UniValue& params, bool fHelp)

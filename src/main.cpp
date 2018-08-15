@@ -2153,9 +2153,9 @@ double ConvertBitsToDouble(unsigned int nBits)
 
 int64_t GetBlockValue(int nHeight)
 {
-    if (nHeight == 1) {
-        return 1200000 * COIN;
-    } else if (nHeight > 1 && nHeight <= 200) {
+    if (nHeight >= 1 && nHeight <= 4) {
+        return 300000 * COIN;
+    } else if (nHeight > 4 && nHeight <= 200) {
         return 1 * COIN;
     } else if (nHeight > 200 && nHeight <= 10000) {
         return 1 * COIN;
